@@ -3,7 +3,7 @@
     <el-row class="header">
       <el-col :xs="24" :sm="0">
         <div class="top">
-          <div class="head-pic"><img src="../assets/my.jpg" alt=""></div>
+          <div class="head-pic"><img src="@/assets/my.jpg" alt=""></div>
           <div class="header-name"><span>Four</span>的小站</div>
           <el-button @click="drawer = true" type="primary"><i class="el-icon-menu"></i></el-button>
         </div>
@@ -19,7 +19,7 @@
       <el-col :xs="0" :sm="10" :md="8">
         <div class="info">
           <div class="info-left">
-            <div class="head-pic-big"><img src="../assets/my.jpg" alt=""></div>
+            <div class="head-pic-big"><img src="@/assets/my.jpg" alt=""></div>
             <div class="info-left-text">
               <p style="font-size: 24px;">杨森</p>
               <p>前端工程师 </p>

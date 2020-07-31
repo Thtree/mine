@@ -1,11 +1,11 @@
 <template>
   <div class="login">
     <div class="bg-wrap">
-      <img class="bg" src="../assets/earth.jpg" alt />
+      <img class="bg" src="@/assets/earth.jpg"/>
     </div>
     <div class="content">
       <div class="user-info">
-        <img class="head-pic" alt="我是头像" src="../assets/my.jpg" />
+        <img class="head-pic" alt="我是头像" src="@/assets/my.jpg" />
       </div>
       <p class="name">
         Four
