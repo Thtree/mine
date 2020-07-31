@@ -5,7 +5,7 @@
     </div>
     <div class="content">
       <div class="user-info">
-        <img class="head-pic" alt="我是头像" src="../assets/灌篮高手.jpg" />
+        <img class="head-pic" alt="我是头像" src="../assets/my.jpg" />
       </div>
       <p class="name">
         Four
@@ -13,7 +13,7 @@
       </p>
       <p class="occupation">前端工程师</p>
       <ul class="button-wrap">
-        <li>
+        <li @click="home()">
           <el-tooltip class="item" effect="dark" content="进入主页" placement="top">
             <i class="el-icon-s-custom button-style"></i>
           </el-tooltip>
@@ -40,7 +40,13 @@ export default {
     return {};
   },
   mounted() {},
-  methods: {}
+  methods: {
+    home() {
+      this.$router.push({
+        name: "home"
+      });
+    }
+  }
 };
 </script>
 
@@ -74,10 +80,15 @@ export default {
 .user-info {
   width: 200px;
   height: 200px;
-  border-radius: 100%;
+  border-radius: 5px;
   animation: change 3s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
+}
+.head-pic {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
 }
 .name {
   margin-top: 20px;
@@ -92,28 +103,18 @@ export default {
   font-size: 14px;
   color: #aaa;
 }
-.button-wrap{
+.button-wrap {
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
   margin-top: 150px;
   padding: 10px;
-  border-radius: 20px;
 }
-.button-wrap:hover{
-  box-shadow: 0 0 0px #fff;
-}
-.button-wrap li{
+.button-wrap li {
   margin: 0 20px;
 }
-.button-style{
+.button-style {
   font-size: 30px;
-}
-
-.head-pic {
-  width: 200px;
-  height: 200px;
-  border-radius: 100%;
 }
 @keyframes change {
   from {
