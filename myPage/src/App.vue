@@ -1,13 +1,15 @@
 <template>
   <div id="app">
     <router-view />
+    <el-backtop :bottom="100">
+      <i class="el-icon-top"></i>
+    </el-backtop>
   </div>
 </template>
 
 <script>
-
 export default {
-  name: "App",
+  name: "App"
 };
 </script>
 
@@ -20,6 +22,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   height: 100%;
+  overflow: auto;
+  background-image: url('./assets/earth.jpg')
 }
 body,
 ul,
