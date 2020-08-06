@@ -23,7 +23,6 @@ export default {
   color: #2c3e50;
   height: 100%;
   overflow: auto;
-  background-image: url('./assets/earth.jpg')
 }
 body,
 ul,
@@ -82,10 +81,6 @@ a:focus {
   text-decoration: none;
 }
 html,
-body {
-  width: 100%;
-  height: 100%;
-}
 a,
 input {
   outline: none;

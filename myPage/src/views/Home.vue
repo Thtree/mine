@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <el-row class="model">
+    <el-row class="model" id="myInfomation">
       <el-col :xs="24" :sm="0">
         <div class="top">
           <div class="head-pic">
@@ -22,20 +22,40 @@
           <div>One thing I don't know why</div>
         </header>
 
+        <div v-show="isShow" class="fixed-header">
+          <div class="fixed-header-wrap">
+            <img src="@/assets/my.jpg" alt />
+            <div class="fixed-header-name">
+              <p>Four</p>
+              <p>前端工程师</p>
+            </div>
+          </div>
+        </div>
+
         <div class="right-nav-wrap">
           <div class="right-nav">
             <el-tooltip class="item" effect="light" placement="left">
-              <div slot="content"><img class="v-chat-pic" src="@/assets/vchat.jpg" alt=""></div>
+              <div slot="content">
+                <img class="v-chat-pic" src="@/assets/vchat.jpg" alt />
+              </div>
               <i class="button el-icon-chat-dot-round"></i>
             </el-tooltip>
             <el-tooltip class="item" effect="light" content="846832901@qq.com" placement="left">
               <i class="button el-icon-message"></i>
             </el-tooltip>
-            <el-tooltip class="item" effect="light" content="https://thtree.github.id" placement="left">
+            <el-tooltip
+              class="item"
+              effect="light"
+              content="https://thtree.github.id"
+              placement="left"
+            >
               <i class="button el-icon-share"></i>
             </el-tooltip>
             <el-tooltip class="item" effect="light" placement="left">
-              <div class="tooltip-slot-style" slot="content">出售模板，接受定制个人主页。<br/>承接项目，详情请邮件本人。</div>
+              <div class="tooltip-slot-style" slot="content">
+                出售模板，接受定制个人主页。
+                <br />承接项目，详情请邮件本人。
+              </div>
               <i class="button el-icon-help"></i>
             </el-tooltip>
           </div>
@@ -83,10 +103,10 @@
     <el-row class="model">
       <el-col :span="24">
         <el-collapse class="model-item-wrap" v-model="activeNames" @change="handleChange">
-          <el-collapse-item title="我的天赋树" name="1">
+          <el-collapse-item title="我的天赋树" id="mySkill">
             <el-row class="row-skill-style">
               <el-col :xs="24" :sm="12">
-                <ul class="skill-color-wrap">
+                <ul class="skill-color-wrap" name="qwe">
                   <li>
                     <div class="color-model color-4"></div>
                     <div>掌握</div>
@@ -168,9 +188,9 @@
             </el-row>
           </el-collapse-item>
 
-          <el-collapse-item title="履历" name="2">
+          <el-collapse-item title="履历" name="2" id="myWork">
             <el-timeline>
-            <!-- <el-timeline :reverse="true"> -->
+              <!-- <el-timeline :reverse="true"> -->
               <el-timeline-item
                 class="time-line-item"
                 v-for="(item, index) in companyList"
@@ -194,7 +214,7 @@
             </el-timeline>
           </el-collapse-item>
 
-          <el-collapse-item title="项目" name="3">
+          <el-collapse-item title="项目" name="3" id="myProject">
             <el-row class="project-wrap" type="flex" justify="space-around">
               <el-col
                 v-for="(item, index) in projectList"
@@ -222,6 +242,14 @@
       </el-col>
     </el-row>
 
+    <div class="bg"></div>
+
+    <footer>
+      <span>第一视角工作室</span>
+      <span>1.0版本</span>
+      <span>2020.8更新</span>
+    </footer>
+
     <el-drawer :visible.sync="drawer" direction="ltr" :show-close="false" size="50%">
       <nav-common></nav-common>
     </el-drawer>
@@ -236,6 +264,7 @@ export default {
   data() {
     return {
       drawer: false,
+      isShow: false,
       dataList: [
         {
           class: "el-icon-male",
@@ -400,10 +429,20 @@ export default {
   mounted() {
     let myChart1 = this.$echarts.init(document.getElementById("myChart1"));
     myChart1.setOption(this.option1);
+
+    window.addEventListener("scroll", this.scrollToTop);
   },
   methods: {
     handleChange(val) {
       console.log(val);
+    },
+    scrollToTop() {
+      let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+      if(scrollTop > 130){
+        this.isShow = true
+      } else {
+        this.isShow = false
+      }
     }
   },
   components: {
@@ -418,6 +457,7 @@ export default {
   flex-direction: column;
   align-items: center;
   width: 100%;
+  padding-bottom: 40px;
 }
 header {
   box-sizing: border-box;
@@ -642,10 +682,10 @@ img {
 .time-line-item {
   text-align: left;
 }
-p.position{
+p.position {
   margin-bottom: 20px;
 }
-.working{
+.working {
   color: #409eff;
   font-weight: bold;
   font-size: 16px;
@@ -654,7 +694,7 @@ p.position{
 .right-nav-wrap {
   position: fixed;
   top: 50%;
-  right: 20px;
+  right: 35px;
   margin-top: -75px;
   background-color: #fff;
   z-index: 1;
@@ -673,12 +713,73 @@ p.position{
 .right-nav i:hover {
   background-color: #efefef;
 }
-.tooltip-slot-style{
+.tooltip-slot-style {
   color: #333;
   line-height: 30px;
 }
-.v-chat-pic{
+.v-chat-pic {
   width: 285px;
   height: auto;
+}
+
+footer {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  width: 1200px;
+  margin-left: -600px;
+  line-height: 40px;
+  color: #fff;
+  background-color: #000;
+}
+footer span {
+  margin: 0 5px;
+}
+.bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: url("../assets/earth.jpg");
+  z-index: -1;
+}
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  z-index: 1;
+}
+.fixed-header-wrap{
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.fixed-header-wrap img{
+  width: 50px;
+  height: 50px;
+}
+.fixed-header-name{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 10px;
+}
+.fixed-header-name p{
+  text-align: left;
+  color: #555;
+}
+.fixed-header-name p:first-child{
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
 }
 </style>

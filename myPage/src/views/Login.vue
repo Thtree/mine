@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <div class="bg-wrap">
-      <img class="bg" src="@/assets/earth.jpg"/>
+      <img class="bg" src="@/assets/earth.jpg" />
     </div>
     <div class="content">
       <div class="user-info">
@@ -25,13 +25,19 @@
         </li>
         <li>
           <el-tooltip class="item" effect="dark" placement="top">
-            <div class="tooltip-slot-style" slot="content">我的B站直播间<br/>http://live.bilibili.com/6025535</div>
+            <div class="tooltip-slot-style" slot="content">
+              我的B站直播间
+              <br />http://live.bilibili.com/6025535
+            </div>
             <i class="el-icon-video-camera button-style"></i>
           </el-tooltip>
         </li>
         <li>
           <el-tooltip class="item" effect="dark" content="846832901@qq.com" placement="top">
-            <div class="tooltip-slot-style" slot="content">出售模板，接受定制个人主页。<br/>承接项目，详情请邮件本人。</div>
+            <div class="tooltip-slot-style" slot="content">
+              出售模板，接受定制个人主页。
+              <br />承接项目，详情请邮件本人。
+            </div>
             <i class="el-icon-s-help button-style"></i>
           </el-tooltip>
         </li>
@@ -65,9 +71,14 @@ export default {
   justify-content: space-around;
   width: 100%;
   height: 100%;
+  padding-bottom: 50px;
 }
 .bg-wrap {
   position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
   height: 100%;
   z-index: -1;
@@ -82,13 +93,14 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  margin-top: 10%;
   color: #fff;
 }
 .user-info {
   width: 200px;
   height: 200px;
   border-radius: 5px;
-  animation: change 5s;
+  animation: change 6s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
@@ -116,7 +128,7 @@ export default {
   flex-direction: row;
   margin-top: 150px;
   padding: 10px;
-  animation: change2 5s;
+  animation: change2 6s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
@@ -126,23 +138,29 @@ export default {
 .button-style {
   font-size: 30px;
 }
-.tooltip-slot-style{
+.tooltip-slot-style {
   line-height: 30px;
 }
 @keyframes change {
-  from {
+  0% {
+    box-shadow: 0 0 40px #fff;
+  }
+  50% {
     box-shadow: 0 0 0px #fff;
   }
-  to {
-    box-shadow: 0 0 40px #fff;
+  100% {
+    box-shadow: 0 0 0px #fff;
   }
 }
 @keyframes change2 {
-  from {
-    box-shadow: 0 0 60px #fff;
-  }
-  to {
+  0% {
     box-shadow: 0 0 0px #fff;
+  }
+  50% {
+    box-shadow: 0 0 0px #fff;
+  }
+  100% {
+    box-shadow: 0 0 40px #fff;
   }
 }
 </style>
