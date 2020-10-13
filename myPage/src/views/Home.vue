@@ -102,11 +102,11 @@
 
     <el-row class="model">
       <el-col :span="24">
-        <el-collapse class="model-item-wrap" v-model="activeNames" @change="handleChange">
-          <el-collapse-item title="我的天赋树" id="mySkill">
+        <el-collapse class="model-item-wrap" v-model="activeNames">
+          <el-collapse-item title="我的天赋树" name="1" id="mySkill">
             <el-row class="row-skill-style">
               <el-col :xs="24" :sm="12">
-                <ul class="skill-color-wrap" name="qwe">
+                <ul class="skill-color-wrap">
                   <li>
                     <div class="color-model color-4"></div>
                     <div>掌握</div>
@@ -433,9 +433,6 @@ export default {
     window.addEventListener("scroll", this.scrollToTop);
   },
   methods: {
-    handleChange(val) {
-      console.log(val);
-    },
     scrollToTop() {
       let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
       if(scrollTop > 130){
