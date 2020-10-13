@@ -1,11 +1,11 @@
 <template>
   <div class="headerCommon">
-    <el-menu default-active="1" class="el-menu-vertical-demo" @select="handleSelect">
+    <el-menu :default-active="activeIndex" class="el-menu-vertical-demo" @select="handleSelect">
       <el-menu-item v-for="(item, index) in navData" :key="index" :index="item.maoDian">
-        <a @click.prevent="custormAnchor(item.maoDian)">
+        <div @click="custormAnchor(item.maoDian)">
           <i :class="item.class"></i>
           <span slot="title">{{item.text}}</span>
-        </a>
+        </div>
       </el-menu-item>
       <el-menu-item index="phone">
         <i class="el-icon-phone"></i>
@@ -24,7 +24,7 @@ export default {
   name: "headerCommon",
   data() {
     return {
-      activeIndex: "1",
+      activeIndex: "",
       navData: [
         {
           maoDian: 'myInfomation',
@@ -49,7 +49,6 @@ export default {
       ]
     };
   },
-  mounted() {},
   methods: {
     handleSelect(index) {
       if(index == 'phone'){
@@ -67,12 +66,7 @@ export default {
       }
     },
     custormAnchor(anchorName) {
-      // 找到锚点
-      let anchorElement = document.getElementById(anchorName);
-      // 如果对应id的锚点存在，就跳转到锚点
-      if (anchorElement) {
-        anchorElement.scrollIntoView();
-      }
+      this.$emit('custorm-anchor', anchorName)
     }
   }
 };

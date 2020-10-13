@@ -92,10 +92,14 @@
         </div>
       </el-col>
       <el-col :span="24">
-        <div class="myself">简单的自我介绍</div>
+        <div class="myself">自我简介</div>
         <div class="myself-text">
           这里是一位年轻的前端工程师,大学所读计算机专业：软件技术.net。热爱计算机，热爱电子竞技。敲得了代码，修的了电脑。喜欢新鲜事物与挑战，热衷于团队协作。为人和善，处事认真负责。个人兴趣爱好很多，喜欢有逻辑性的事物，喜欢推理，
           很高兴能结交到新得朋友。
+        </div>
+        <div class="myself-text">
+          在从事程序员工作的这几年中，在很多行业中多工作过。个人认为有独立解决问题的能力，对于项目和工作都能做到认真负责。能从用户的角度来分析需求。前端不仅仅是编程，对于交互体验，找到用户最喜欢，给用户带来美的视觉体验，流畅的交互体验更重要。
+          在成为程序员前有做过一段网页设计的工作，个人比较偏好简约风格的网站。对视觉设计，交互体验有自己的深刻领悟。个人强项在项目搭建，页面布局，和代码规范与可维护性，对公共模块的开发也有一些经验。
         </div>
       </el-col>
     </el-row>
@@ -251,7 +255,7 @@
     </footer>
 
     <el-drawer :visible.sync="drawer" direction="ltr" :show-close="false" size="50%">
-      <nav-common></nav-common>
+      <nav-common @custorm-anchor="custormAnchor"></nav-common>
     </el-drawer>
   </div>
 </template>
@@ -434,11 +438,20 @@ export default {
   },
   methods: {
     scrollToTop() {
-      let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
-      if(scrollTop > 130){
-        this.isShow = true
+      let scrollTop =
+        document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop > 130) {
+        this.isShow = true;
       } else {
-        this.isShow = false
+        this.isShow = false;
+      }
+    },
+    custormAnchor(anchorName) {
+      // 找到锚点
+      let anchorElement = document.getElementById(anchorName);
+      // 如果对应id的锚点存在，就跳转到锚点
+      if (anchorElement) {
+        anchorElement.scrollIntoView();
       }
     }
   },
@@ -537,6 +550,7 @@ img {
   font-weight: bold;
 }
 .info-left-text p {
+  text-align: right;
   line-height: 70px;
 }
 .info-list-wrap {
@@ -749,7 +763,7 @@ footer span {
   border-bottom: 1px solid #ddd;
   z-index: 1;
 }
-.fixed-header-wrap{
+.fixed-header-wrap {
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
@@ -760,21 +774,21 @@ footer span {
   margin: 0 auto;
   padding: 0 20px;
 }
-.fixed-header-wrap img{
+.fixed-header-wrap img {
   width: 50px;
   height: 50px;
 }
-.fixed-header-name{
+.fixed-header-name {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   margin-left: 10px;
 }
-.fixed-header-name p{
+.fixed-header-name p {
   text-align: left;
   color: #555;
 }
-.fixed-header-name p:first-child{
+.fixed-header-name p:first-child {
   font-weight: bold;
   font-size: 16px;
   color: #333;
