@@ -3,6 +3,7 @@
     <div class="bg-wrap">
       <img class="bg" src="@/assets/earth.jpg" />
     </div>
+
     <div class="content">
       <div class="user-info">
         <img class="head-pic" alt="我是头像" src="@/assets/my.jpg" />
@@ -14,12 +15,32 @@
       <p class="occupation">前端工程师</p>
       <ul class="button-wrap">
         <li @click="home()">
-          <el-tooltip class="item" effect="dark" content="进入主页" placement="top">
+          <el-tooltip
+            class="item"
+            effect="dark"
+            content="个人简历"
+            placement="top"
+          >
             <i class="el-icon-s-custom button-style"></i>
           </el-tooltip>
         </li>
         <li>
-          <el-tooltip class="item" effect="dark" content="846832901@qq.com" placement="top">
+          <el-tooltip
+            class="item"
+            effect="dark"
+            content="好玩的功能"
+            placement="top"
+          >
+            <i class="el-icon-magic-stick button-style"></i>
+          </el-tooltip>
+        </li>
+        <li>
+          <el-tooltip
+            class="item"
+            effect="dark"
+            content="846832901@qq.com"
+            placement="top"
+          >
             <i class="el-icon-message button-style"></i>
           </el-tooltip>
         </li>
@@ -33,7 +54,12 @@
           </el-tooltip>
         </li>
         <li>
-          <el-tooltip class="item" effect="dark" content="846832901@qq.com" placement="top">
+          <el-tooltip
+            class="item"
+            effect="dark"
+            content="846832901@qq.com"
+            placement="top"
+          >
             <div class="tooltip-slot-style" slot="content">
               出售模板，接受定制个人主页。
               <br />承接项目，详情请邮件本人。
@@ -43,6 +69,40 @@
         </li>
       </ul>
     </div>
+
+    <el-dialog
+      title="身份验证"
+      :visible.sync="dialogVisible"
+      width="300px"
+      @close="close"
+    >
+      <el-form
+        :model="my"
+        status-icon
+        :rules="rules"
+        ref="my"
+        label-width="60px"
+      >
+        <el-form-item label="账号" prop="acc">
+          <el-input
+            type="password"
+            v-model="my.acc"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="密码" prop="pass">
+          <el-input
+            type="password"
+            v-model="my.pass"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="sure">确 定</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -50,16 +110,60 @@
 export default {
   name: "login",
   data() {
-    return {};
+    return {
+      dialogVisible: false,
+      my: {
+        acc: "",
+        pass: "",
+      },
+      rules: {
+        acc: [{ validator: this.validateAcc, trigger: "blur" }],
+        pass: [{ validator: this.validatePass, trigger: "blur" }],
+      },
+    };
   },
-  mounted() {},
   methods: {
+    close(){
+      this.$refs["my"].resetFields()
+    },
+    validateAcc(rule, value, callback) {
+      if (value === "") {
+        callback(new Error("请输入账号"));
+      } else {
+        if (this.my.acc !== "thtree") {
+          callback(new Error("账号错误"));
+        }
+        callback();
+      }
+    },
+    validatePass(rule, value, callback) {
+      if (value === "") {
+        callback(new Error("请输入密码"));
+      } else {
+        if (this.my.pass !== "9999") {
+          callback(new Error("密码错误"));
+        }
+        callback();
+      }
+    },
     home() {
-      this.$router.push({
-        name: "home"
+      this.dialogVisible = true;
+    },
+    sure() {
+      this.$refs["my"].validate((valid) => {
+        if (valid) {
+          window.localStorage.setItem('acc', this.my.acc)
+          window.localStorage.setItem('pass', this.my.pass)
+          this.$router.push({
+            name: "home",
+          });
+        } else {
+          this.$message.error("错误！")
+          return false;
+        }
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -93,8 +197,10 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  width: 100%;
   margin-top: 10%;
   color: #fff;
+  cursor: default;
 }
 .user-info {
   width: 200px;
@@ -126,14 +232,15 @@ export default {
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  width: calc(90% - 20px);
+  max-width: 340px;
   margin-top: 150px;
   padding: 10px;
+  cursor: pointer;
   animation: change2 6s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
-}
-.button-wrap li {
-  margin: 0 20px;
 }
 .button-style {
   font-size: 30px;

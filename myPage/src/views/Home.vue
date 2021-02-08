@@ -6,9 +6,7 @@
           <div class="head-pic">
             <img src="@/assets/my.jpg" alt />
           </div>
-          <div class="header-name">
-            <span>Four</span>的小站
-          </div>
+          <div class="header-name"><span>Four</span>的小站</div>
           <el-button @click="drawer = true" type="primary">
             <i class="el-icon-menu"></i>
           </el-button>
@@ -16,9 +14,7 @@
       </el-col>
       <el-col :xs="0" :sm="24">
         <header>
-          <div class="net-name">
-            <span>Four</span>的小站
-          </div>
+          <div class="net-name"><span>Four</span>的小站</div>
           <div>One thing I don't know why</div>
         </header>
 
@@ -40,7 +36,12 @@
               </div>
               <i class="button el-icon-chat-dot-round"></i>
             </el-tooltip>
-            <el-tooltip class="item" effect="light" content="846832901@qq.com" placement="left">
+            <el-tooltip
+              class="item"
+              effect="light"
+              content="846832901@qq.com"
+              placement="left"
+            >
               <i class="button el-icon-message"></i>
             </el-tooltip>
             <el-tooltip
@@ -70,7 +71,7 @@
               <img src="@/assets/my.jpg" alt />
             </div>
             <div class="info-left-text">
-              <p style="font-size: 24px;">杨森</p>
+              <p style="font-size: 24px">杨森</p>
               <p>前端工程师</p>
             </div>
           </div>
@@ -79,12 +80,18 @@
       <el-col :xs="24" :sm="12" :md="14">
         <div class="info">
           <el-row class="info-list-wrap" type="flex" align="middle">
-            <el-col :xs="12" :sm="12" :md="6" v-for="(item, index) in dataList" :key="index">
+            <el-col
+              :xs="12"
+              :sm="12"
+              :md="6"
+              v-for="(item, index) in dataList"
+              :key="index"
+            >
               <div class="info-list-item">
                 <i :class="item.class"></i>
                 <div>
-                  {{item.title}}
-                  <span>{{item.text}}</span>
+                  {{ item.title }}
+                  <span>{{ item.text }}</span>
                 </div>
               </div>
             </el-col>
@@ -98,8 +105,10 @@
           很高兴能结交到新得朋友。
         </div>
         <div class="myself-text">
-          在从事程序员工作的这几年中，在很多行业中多工作过。个人认为有独立解决问题的能力，对于项目和工作都能做到认真负责。能从用户的角度来分析需求。前端不仅仅是编程，对于交互体验，找到用户最喜欢，给用户带来美的视觉体验，流畅的交互体验更重要。
-          在成为程序员前有做过一段网页设计的工作，个人比较偏好简约风格的网站。对视觉设计，交互体验有自己的深刻领悟。个人强项在项目搭建，页面布局，和代码规范与可维护性，对公共模块的开发也有一些经验。
+          在从事程序员工作的这几年中，在很多行业中多工作过(电商行业、快递行业、金融行业等)，在不同的行业中学到了许多不同的知识，积累了丰富的项目经验。本人有独立解决问题的能力，对于项目和工作都能做到认真负责，能从用户的角度来分析需求。对于前端改行业的理解，前端不仅仅是编程，舒适的交互体验，给用户呈现美的视觉体验，找到用户最喜欢操作方式，带给用户流畅的交互体验这些也是前端开发工作中极为重要的职责。
+        </div>
+        <div class="myself-text">
+          在成为程序员前有做过一段网页设计的工作，个人比较偏好简约风格的网站。对视觉设计，交互体验有自己的感受与领悟，能与设计师默契配合，把项目质量开发到最优。个人强项在项目框架的搭建，前端页面的布局，开发过程中代码的规范与后期代码的可维护性可拓展性这些方面，对公共模块的开发也有丰富的经验。可以开发简单适用的高度自定义组件，方便整个团队进行小项目的快速开发。
         </div>
       </el-col>
     </el-row>
@@ -205,12 +214,12 @@
                 <el-card>
                   <el-row>
                     <el-col :xs="24" :sm="12" :md="8">
-                      <h4>{{item.companyName}}</h4>
-                      <p class="position">{{item.position}}</p>
+                      <h4>{{ item.companyName }}</h4>
+                      <p class="position">{{ item.position }}</p>
                     </el-col>
                     <el-col :xs="24" :sm="12" :md="16">
                       <div class="working">工作职责/经历/经验简述</div>
-                      <div>{{item.text}}</div>
+                      <div>{{ item.text }}</div>
                     </el-col>
                   </el-row>
                 </el-card>
@@ -230,10 +239,10 @@
               >
                 <el-card class="box-card">
                   <div slot="header" class="clearfix">
-                    <span class="project-name">{{item.projectName}}</span>
-                    <span>{{item.duan}}</span>
+                    <span class="project-name">{{ item.projectName }}</span>
+                    <span>{{ item.duan }}</span>
                   </div>
-                  <div>担任角色：{{item.position}}</div>
+                  <div>担任角色：{{ item.position }}</div>
                 </el-card>
               </el-col>
             </el-row>
@@ -254,7 +263,12 @@
       <span>2020.8更新</span>
     </footer>
 
-    <el-drawer :visible.sync="drawer" direction="ltr" :show-close="false" size="50%">
+    <el-drawer
+      :visible.sync="drawer"
+      direction="ltr"
+      :show-close="false"
+      size="50%"
+    >
       <nav-common @custorm-anchor="custormAnchor"></nav-common>
     </el-drawer>
   </div>
@@ -273,33 +287,33 @@ export default {
         {
           class: "el-icon-male",
           title: "性别：",
-          text: "男"
+          text: "男",
         },
         {
           class: "el-icon-user-solid",
           title: "年龄：",
-          text: "27"
+          text: "27",
         },
         {
           class: "el-icon-date",
           title: "生日：",
-          text: "10.10"
+          text: "10.10",
         },
         {
           class: "el-icon-map-location",
           title: "所在地：",
-          text: "上海"
+          text: "上海",
         },
         {
           class: "el-icon-place",
           title: "籍贯：",
-          text: "河南省"
+          text: "河南省",
         },
         {
           class: "el-icon-monitor",
           title: "行业经验：",
-          text: "5年"
-        }
+          text: "5年",
+        },
       ],
       companyList: [
         {
@@ -308,7 +322,7 @@ export default {
           position: "前端工程师/实习",
           text: `大四曾在此公司实习网页设计师岗位，后毕业后再次来到此公司司职前端工程师岗位，进行实习学习。
           期间认真学习了前端基础三剑客，由老师傅带领进行实际项目的开发。先后参与了两个大型购物网站的开发，一个直播单页面的开发，
-          像老师傅们学习了很多前端交互的技巧，养成了良好的代码规范，开发规范，未今后的职业生涯打下了良好的基础。`
+          像老师傅们学习了很多前端交互的技巧，养成了良好的代码规范，开发规范，未今后的职业生涯打下了良好的基础。`,
         },
         {
           companyName: "河南碧佳实业股份有限公司",
@@ -316,7 +330,7 @@ export default {
           position: "前端工程师/初级",
           text: `此公司并购了前公司，任职期间开始正式接触前端的mvvm框架开发模式。团队所做的PC端，移动端，POS机等都基于angular框架。
           项目技术迭代从angular2一直到angular4。在此期间还接触了：响应式布局、H5混合开发、在线聊天（腾讯服务）、sass、less、TypeScript、webpack、es6、css3动画等技术。了解了前端广泛的知识空间，拓展了第三方插件库。
-          并对项目结构，项目部署流程，打包配置等更深一步的了解。任职期间接触并解决跨域问题，众多移动端兼容问题、不同手机系统兼容性问题。个人技术得到很多提升，培养了独立解决问题的能力，前端插件库也丰富很多，学习能力增强。`
+          并对项目结构，项目部署流程，打包配置等更深一步的了解。任职期间接触并解决跨域问题，众多移动端兼容问题、不同手机系统兼容性问题。个人技术得到很多提升，培养了独立解决问题的能力，前端插件库也丰富很多，学习能力增强。`,
         },
         {
           companyName: "上海东普信息科技有限公司",
@@ -324,77 +338,77 @@ export default {
           position: "前端工程师/中级",
           text: `任职期间前端团队所用技术都很老，依靠原生js或者jquey来做项目，没有前后端分离的项目，前端基本上只使用一些lazyUI、easyUI这些UI框架。任职后期提议团队革新开发模式，采用前后端分离。因为没有大型
           项目，便选择vue框架为前端开发框架，并在此期间负责项目下前端人员的任务分配，前端项目的搭建，并同大家一起学习，进行知识分享，问题解决经历经验分享等。在这之后开始深入学习vue，接触vue的“生态圈”，并逐步了解对比vue与angular的
-          相同之处与不同之处，以此来更好的服务于业务。这段时间还独自学习了微信小程序，并应用到了开发中，完善了前端技术栈。`
+          相同之处与不同之处，以此来更好的服务于业务。这段时间还独自学习了微信小程序，并应用到了开发中，完善了前端技术栈。`,
         },
         {
           companyName: "上海恩梯梯数据晋恒软件有限公司",
           date: "2019.05 - 至今",
           position: "前端工程师/中级",
           text: `负责项目前端部分的技术选择，任务分配。因为是在项目初中期接手，在之后带领团队对项目先前前端不合理的地方进行了重构。规范了团队中的前后端交互，开发了大量公共组件。解决了甲方需要动态配置表单
-          的需求，被甲方给予肯定。整个项目被甲方给予表彰，整个团队还被评为公司年度最佳团队。`
-        }
+          的需求，被甲方给予肯定。整个项目被甲方给予表彰，整个团队还被评为公司年度最佳团队。`,
+        },
       ],
       projectList: [
         {
           projectName: "第五大街跨境商城网站",
           duan: "PC端",
-          position: "web前端工程师"
+          position: "web前端工程师",
         },
         {
           projectName: "酷有机直播",
           duan: "PC端",
-          position: "web前端工程师"
+          position: "web前端工程师",
         },
         {
           projectName: "碧佳实业官网改版",
           duan: "PC端",
-          position: "web前端工程师"
+          position: "web前端工程师",
         },
         {
           projectName: "有机客商城",
           duan: "移动端",
-          position: "web前端工程师"
+          position: "web前端工程师",
         },
         {
           projectName: "韵味商城",
           duan: "小程序",
-          position: "前端工程师"
+          position: "前端工程师",
         },
         {
           projectName: "质量管控",
           duan: "移动端",
-          position: "前端工程师"
+          position: "前端工程师",
         },
         {
           projectName: "韵达公益基金官网",
           duan: "PC端",
-          position: "前端工程师"
+          position: "前端工程师",
         },
         {
           projectName: "量本利",
           duan: "PC端",
-          position: "前端负责人"
+          position: "前端负责人",
         },
         {
           projectName: "蒹葭电竞",
           duan: "小程序",
-          position: "私人定制项目"
+          position: "私人定制项目",
         },
         {
           projectName: "韵达招聘网站",
           duan: "PC端",
-          position: "前端架构师"
+          position: "前端架构师",
         },
         {
           projectName: "银联营销开放平台",
           duan: "PC端",
-          position: "前端负责人"
-        }
+          position: "前端负责人",
+        },
       ],
       activeNames: ["1", "2", "3", "4"],
       option1: {
         title: {
-          text: "技能雷达图"
+          text: "技能雷达图",
         },
         tooltip: {},
         radar: {
@@ -404,8 +418,8 @@ export default {
               color: "#fff",
               backgroundColor: "#999",
               borderRadius: 3,
-              padding: [3, 5]
-            }
+              padding: [3, 5],
+            },
           },
           indicator: [
             { name: "CSS", max: 10 },
@@ -413,8 +427,8 @@ export default {
             { name: "HTML", max: 10 },
             { name: "PC端", max: 10 },
             { name: "移动端", max: 10 },
-            { name: "小程序", max: 10 }
-          ]
+            { name: "小程序", max: 10 },
+          ],
         },
         series: [
           {
@@ -422,19 +436,27 @@ export default {
             type: "radar",
             data: [
               {
-                value: [9.5, 7, 9.5, 9, 9, 8.5]
-              }
-            ]
-          }
-        ]
-      }
+                value: [9.7, 8, 9.8, 9.5, 9, 8.5],
+              },
+            ],
+          },
+        ],
+      },
     };
   },
-  mounted() {
-    let myChart1 = this.$echarts.init(document.getElementById("myChart1"));
-    myChart1.setOption(this.option1);
-
-    window.addEventListener("scroll", this.scrollToTop);
+  beforeRouteEnter(to, from, next) {
+    let acc = window.localStorage.getItem("acc");
+    let pass = window.localStorage.getItem("pass");
+    if (acc !== "thtree" || pass !== "9999") {
+      next((vm) => {
+        vm.$router.push({
+          name: "warning",
+        });
+      });
+    } else {
+      window.localStorage.clear();
+      next(true);
+    }
   },
   methods: {
     scrollToTop() {
@@ -453,11 +475,17 @@ export default {
       if (anchorElement) {
         anchorElement.scrollIntoView();
       }
-    }
+    },
+  },
+  mounted() {
+    let myChart1 = this.$echarts.init(document.getElementById("myChart1"));
+    myChart1.setOption(this.option1);
+
+    window.addEventListener("scroll", this.scrollToTop);
   },
   components: {
-    NavCommon
-  }
+    NavCommon,
+  },
 };
 </script>
 
